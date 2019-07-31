@@ -36,5 +36,7 @@ class Email(Campaign):
             adjusted_control (float) the adjusted number of customers in the control group
         """
     
-        adjusted_treatment = self.treatment_size * opt_out_rate
-        adjusted_control = self.control_size * opt_out_rate
+        adjusted_treatment = self.calculate_treatment_size() * (1 - opt_out_rate)
+        adjusted_control = self.calculate_control_size() * (1 - opt_out_rate)
+        
+        return adjusted_treatment, adjusted_control
