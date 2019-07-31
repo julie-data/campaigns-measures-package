@@ -1,5 +1,5 @@
-from datetime import date
-import datetime
+from datetime import datetime
+from dateutil.parser import parse
 
 class Campaign:
     
@@ -14,9 +14,6 @@ class Campaign:
             end_date (string YYYY-MM-DD) representing the last day of the campaign
             eligible_customers (float) representing the number of customers eligible
             control_proportion (flot) representing the proportion of customers in the control group
-            length (float) the campaign length in days
-            treatment_size (float) the number of eligible customers in the treatment group
-            control_size (float) the number of eligible customers in the control group
             """
         
         self.name = campaign_name
@@ -24,9 +21,6 @@ class Campaign:
         self.end = end_date
         self.eligible_customers = eligible_customers
         self.control_proportion = control_proportion
-        self.length = 0
-        self.treatment_size = 0
-        self.control_size = 0
         
     def calculate_length(self):
         
@@ -37,25 +31,47 @@ class Campaign:
             None
             
         Returns:
-            None
+            length (float) represents campaign length in days
         """
         
         format_str = '%Y-%m-%d'
         delta = datetime.strptime(self.end, format_str) - datetime.strptime(self.start, format_str)
+        length = delta.days
         
-        self.length = delta.days
+        return length
+    
+    
         
-    def calculate_group_sizes(self):
+    def calculate_treatment_size(self):
         
         """Function to calculate the number of eligible customers
-        in the treatment and control groups.
+        in the treatment group.
         
         Args:
             None
             
         Returns:
-            None
+            treatment_size (float) represents the number of eligible customers in the treatment group
         """
         
-        self.treatment_size = self.eligible_customers * (1 - self.control_proportion)
-        self.control_size = self.eligible_customers * self.control_proportion
+        treatment_size = self.eligible_customers * (1 - self.control_proportion)
+        
+        return treatment_size
+    
+    
+    
+    def calculate_control_size(self):
+        
+        """Function to calculate the number of eligible customers
+        in the treatment group.
+        
+        Args:
+            None
+            
+        Returns:
+            control_size (float) represents the number of eligible customers in the control group
+        """
+        
+        control_size = self.eligible_customers * self.control_proportion
+        
+        return control_size
