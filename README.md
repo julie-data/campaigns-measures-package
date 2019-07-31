@@ -1,4 +1,4 @@
-# distributions-julie-data package
+# campaign-metrics-julie-data package
 
 The goal of the package is to derive performance metrics
 from a marketing campaign. The metrics provided will 
@@ -12,4 +12,4 @@ Websitecampaign.py: class of a website campaign
 
 # Installation
 
-xx
+pip install campaign_metrics_julie_data
