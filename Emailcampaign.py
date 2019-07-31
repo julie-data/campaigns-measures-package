@@ -10,17 +10,15 @@ class Email(Campaign):
         end_date (string YYYY-MM-DD) representing the last day of the campaign
         eligible_customers (float) representing the number of customers eligible
         control_proportion (flot) representing the proportion of customers in the control group
-        length (float) the campaign length in days
-        treatment_size (float) the number of eligible customers in the treatment group
-        control_size (float) the number of eligible customers in the control group
         number_opened (float) the number of customers who have opened the email
         number_opted_out (float) the number of customers who have opted out from the email
         number_bought (float) the number of customers who have purchased the unit advertised
      """
     
-    def __init__(self, campaign_name, start_date, end_date, eligible_customers, control_proportion, number_opened, number_opted_out, number_bought):
+    def __init__(self, name, start, end, eligible_customers, control_proportion
+                 , number_opened, number_opted_out, number_bought):
         
-        Campaign.__init__(self, name, start_date, end_date, eligible_customers, control_proportion)
+        Campaign.__init__(self, name, start, end, eligible_customers, control_proportion)
         self.opened = number_opened
         self.opted_out = number_opted_out
         self.bought = number_bought

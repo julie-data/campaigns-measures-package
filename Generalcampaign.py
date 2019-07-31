@@ -3,7 +3,7 @@ from dateutil.parser import parse
 
 class Campaign:
     
-    def __init__(self, campaign_name, start_date, end_date, eligible_customers, control_proportion):
+    def __init__(self, name, start, end, eligible_customers, control_proportion):
         
         """ Generic campaign class to calculate 
         performance metrics on the campaign.
@@ -16,9 +16,9 @@ class Campaign:
             control_proportion (flot) representing the proportion of customers in the control group
             """
         
-        self.name = campaign_name
-        self.start = start_date
-        self.end = end_date
+        self.name = name
+        self.start = start
+        self.end = end
         self.eligible_customers = eligible_customers
         self.control_proportion = control_proportion
         
