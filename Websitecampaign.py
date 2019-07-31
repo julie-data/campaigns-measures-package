@@ -16,7 +16,7 @@ class Website(Campaign):
      """
     
     def __init__(self, name, start, end, eligible_customers, control_proportion
-                 , number_clicked, number_opted_out, number_bought_treatment, number_bought_control):
+                 , number_clicked, number_bought_treatment, number_bought_control):
         
         Campaign.__init__(self, name, start, end, eligible_customers, control_proportion)
         self.clicked = number_clicked
