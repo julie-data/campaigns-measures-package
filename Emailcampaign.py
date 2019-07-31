@@ -16,7 +16,7 @@ class Email(Campaign):
      """
     
     def __init__(self, name, start, end, eligible_customers, control_proportion
-                 , number_opened, number_opted_out, number_bought_treatment, number_bought_control):
+                 , number_opened, number_bought_treatment, number_bought_control):
         
         Campaign.__init__(self, name, start, end, eligible_customers, control_proportion)
         self.opened = number_opened
@@ -81,8 +81,8 @@ class Email(Campaign):
         adj_population, adj_treat, adj_control = self.calculate_adjusted_population(opt_out_rate)
         
         # Calculate purchase rate
-        purchase_rate_treatment = bought_treatment / adj_treat
-        purchase_rate_control = bought_control / adj_control
+        purchase_rate_treatment = self.bought_treatment / adj_treat
+        purchase_rate_control = self.bought_control / adj_control
         
         # Calculate most performing group
         if purchase_rate_treatment >= purchase_rate_control:
